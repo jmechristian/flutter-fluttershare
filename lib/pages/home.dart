@@ -16,6 +16,8 @@ final StorageReference storageRef = FirebaseStorage.instance.ref();
 final postsRef = Firestore.instance.collection('posts');
 final usersRef = Firestore.instance.collection('users');
 final commentsRef = Firestore.instance.collection('comments');
+final followersRef = Firestore.instance.collection('followers');
+final followingRef = Firestore.instance.collection('following');
 final activityFeedRef = Firestore.instance.collection('feed');
 final DateTime timestamp = DateTime.now();
 
@@ -123,11 +125,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: PageView(
         children: <Widget>[
-          RaisedButton(
-            child: Text('Logout'),
-            onPressed: logout,
-          ),
-          // Timeline(),
+          Timeline(),
           ActivityFeed(),
           Upload(currentUser: currentUser),
           Search(),
